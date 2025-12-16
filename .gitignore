@@ -1,0 +1,17 @@
+.env
+__pycache__/
+*.pyc
+.wwebjs_auth/
+*.log
+.wwebjs_cache/
+node_modules/
+*.bat
+get_models.py
+available_models.txt
+whatsapp_*.py
+whatsapp_handler.js
+package*.json
+
+# Service Account Keys (security)
+*-service-account-*.json
+service-account-key.json
