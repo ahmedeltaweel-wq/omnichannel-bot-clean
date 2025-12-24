@@ -131,22 +131,8 @@ def web_chat():
             
         logger.info(f"🌐 Web Chat from {user_id}: {message}")
         
-        # Reuse the existing AI logic
-        # wrapping in async-to-sync or just running logic if possible.
-        # Since flask is threaded here but main loop is async, we need care.
-        # For simplicity in this threaded context, we call the async function synchronously loop
-        import asyncio
-        
-        # Create a new loop for this thread if needed or run in existing
-        try:
-            loop = asyncio.new_event_loop()
-            asyncio.set_event_loop(loop)
-            response_text = loop.run_until_complete(process_with_ai(message, language, user_id))
-            loop.close()
-        except RuntimeError:
-            # If we are already in a loop (unlikely in flask thread but possible)
-            # fallback logic needed
-             response_text = "System is busy, please try again."
+        # Use Synchronous processing for Flask to avoid Event Loop issues
+        response_text = process_with_ai_sync(message, language, user_id)
 
         return jsonify({
             'response': response_text,
@@ -189,7 +175,12 @@ async def process_with_ai(query: str, language: str, user_id: str) -> str:
         company_context = company_kb.get_summary()
 
         # Simplified prompt construction for shared use
-        prompt_intro = "أنت موظف خدمة عملاء" if language == "ar" else "You are a customer service rep"
+        # Custom prompt for Tax Authority Demo
+        prompt_intro = """أنت المساعد الذكي لمصلحة الضرائب المصرية (Tax Admin 3.0). 
+يجب أن يتضمن كل رد لك رابطاً مباشراً واحداً على الأقل من 'روابط الخدمات السريعة' المتاحة في قاعدة المعرفة لمساعدة المواطن على الانتقال للخدمة مباشرة.
+كن ودوداً، مهنيًا، ومبهرًا في توضيح مزايا النظام الجديد.""" if language == "ar" else """You are the AI Assistant for the Egyptian Tax Authority (Tax Admin 3.0). 
+Every response MUST include at least one direct link to the relevant tax service from the 'Quick Service Links' section for a seamless citizen experience.
+Be friendly, professional, and highlight system benefits."""
         
         prompt = f"""{prompt_intro}
         
@@ -210,15 +201,70 @@ Provide a helpful, friendly response.
         add_to_history(user_id, "user", query)
         add_to_history(user_id, "assistant", answer)
         
-        return formatter.clean_ai_formatting(answer)
-
+        return answer
     except Exception as e:
         logger.error(f"AI Error: {e}")
         return "Sorry, I encountered an error."
 
+def process_with_ai_sync(query: str, language: str, user_id: str) -> str:
+    """Synchronous version of process_with_ai for Flask"""
+    try:
+        if not gemini_model:
+            return kb.search_faq(query, language) or "Sorry, AI is offline."
+            
+        history = get_conversation_history(user_id)
+        
+        context_messages = ""
+        if history:
+            context_messages = "\n\nPrevious conversation:\n"
+            for msg in history[-6:]:
+                role = "User" if msg["role"] == "user" else "Assistant"
+                context_messages += f"{role}: {msg['content']}\n"
+        
+        company_context = company_kb.get_summary()
+
+        # Custom prompt for Tax Authority Demo - Human & Concise
+        prompt_intro = """أنت المساعد الذكي لمصلحة الضرائب المصرية (Tax Admin 3.0). 
+يجب أن يتضمن ردك دائماً رابطاً مباشراً أو فيديو إرشادي من قاعدة المعرفة لمساعدة المواطن. 
+اجعل الردود قصيرة ومفيدة وطبيعية.""" if language == "ar" else """You are the AI Assistant for the Egyptian Tax Authority. 
+You MUST always include a direct service link or guide video from the knowledge base in your response to help the citizen. 
+Keep responses short, helpful, and natural."""
+        
+        prompt = f"""{prompt_intro}
+        
+Company Context: {company_context}
+
+History:
+{context_messages}
+
+User Query: {query}
+
+INSTRUCTIONS:
+1. Short answers only (max 2-3 sentences).
+2. Answer EXACTLY what is asked.
+3. Be conversational and natural.
+4. No bullet points unless strictly necessary.
+
+Response:
+"""
+        # Call Gemini Synchronously
+        response = gemini_model.generate_content(prompt)
+        answer = response.text
+        
+        add_to_history(user_id, "user", query)
+        add_to_history(user_id, "assistant", answer)
+        
+        return answer
+
+    except Exception as e:
+        logger.error(f"AI Sync Error: {e}")
+        return "Sorry, I encountered an error."
+
 def main():
-   # ... same as before ...
-   pass
+    """Run the application"""
+    # Start Flask API (Blocking call for now, since we only need the Web Chat for this test)
+    logger.info("🚀 Starting Web Chat API on port 8080...")
+    run_flask()
 
 if __name__ == '__main__':
     main()

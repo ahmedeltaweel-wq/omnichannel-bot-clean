@@ -4,103 +4,290 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Omnichannel Web Chat</title>
+    <title>Tax Admin Support Widget</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        :root {
+            --primary-color: #0d47a1;
+            /* Official Blue */
+            --accent-color: #1976d2;
+            --gradient: linear-gradient(135deg, #0d47a1 0%, #1565c0 100%);
+            --bg-color: #f8f9fa;
+        }
+
         body {
-            font-family: 'Segoe UI', reqular, sans-serif;
-            background: #f5f5f5;
+            font-family: 'Cairo', sans-serif;
+            background: transparent;
+            /* Transparent for widget mode */
             margin: 0;
+            padding: 0;
+        }
+
+        /* Floating Button */
+        .chat-widget-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 65px;
+            height: 65px;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 28px;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(13, 71, 161, 0.4);
+            z-index: 9999;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .chat-widget-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 25px rgba(13, 71, 161, 0.5);
+        }
+
+        /* Widget Container */
+        .chat-widget-container {
+            position: fixed;
+            bottom: 110px;
+            right: 30px;
+            width: 380px;
+            height: 600px;
+            max-height: 80vh;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            display: none;
+            /* Hidden by default */
+            flex-direction: column;
+            overflow: hidden;
+            z-index: 9998;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+            border: 1px solid #eee;
+        }
+
+        .chat-widget-container.active {
+            display: flex;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Header */
+        .widget-header {
+            background: var(--gradient);
+            color: white;
             padding: 20px;
             display: flex;
-            justify-content: center;
+            align-items: center;
+            justify-content: space-between;
         }
 
-        .chat-container {
-            width: 100%;
-            max-width: 400px;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            height: 80vh;
+        .header-content h3 {
+            margin: 0;
+            font-size: 1.1rem;
+            font-weight: 700;
         }
 
-        .chat-header {
-            background: #007bff;
+        .header-content p {
+            margin: 2px 0 0;
+            font-size: 0.8rem;
+            opacity: 0.9;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
             color: white;
-            padding: 15px;
-            text-align: center;
-            font-weight: bold;
+            font-size: 1.2rem;
+            cursor: pointer;
+            opacity: 0.8;
+            transition: 0.2s;
         }
 
-        .chat-messages {
+        .close-btn:hover {
+            opacity: 1;
+        }
+
+        /* Screens */
+        .screen {
             flex: 1;
-            overflow-y: auto;
-            padding: 15px;
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        /* Login Form */
+        #login-screen {
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: #fff;
+        }
+
+        .logo-placeholder {
+            width: 80px;
+            height: 80px;
+            background: #e3f2fd;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            width: 100%;
+            margin-bottom: 15px;
+            text-align: right;
+        }
+
+        .form-group label {
+            font-size: 0.9rem;
+            color: #555;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            font-family: 'Cairo', sans-serif;
+            outline: none;
+            transition: 0.3s;
+            box-sizing: border-box;
+        }
+
+        .form-group input:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(13, 71, 161, 0.1);
+        }
+
+        .start-chat-btn {
+            width: 100%;
+            padding: 14px;
+            background: var(--gradient);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-family: 'Cairo', sans-serif;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: 0.3s;
+        }
+
+        .start-chat-btn:hover {
+            opacity: 0.95;
+            transform: translateY(-2px);
+        }
+
+        /* Chat Screen */
+        #chat-screen {
+            display: none;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+
+        .messages-area {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
         }
 
         .message {
-            padding: 10px 15px;
-            border-radius: 10px;
-            max-width: 80%;
-            line-height: 1.4;
+            max-width: 85%;
+            padding: 10px 14px;
+            border-radius: 15px;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            position: relative;
+            animation: slideIn 0.3s ease;
             word-wrap: break-word;
         }
 
-        .message.user {
-            align-self: flex-end;
-            background: #007bff;
-            color: white;
-            border-bottom-left-radius: 2px;
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .message.bot {
-            align-self: flex-start;
-            background: #f0f0f0;
+            background: white;
             color: #333;
-            border-bottom-right-radius: 2px;
+            border-top-right-radius: 2px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            margin-right: auto;
         }
 
-        .chat-input {
+        .message.user {
+            background: var(--primary-color);
+            color: white;
+            border-top-left-radius: 2px;
+            align-self: flex-end;
+            margin-left: auto;
+        }
+
+        /* Input Area */
+        .input-area {
             padding: 15px;
+            background: white;
             border-top: 1px solid #eee;
             display: flex;
             gap: 10px;
         }
 
-        input {
+        .chat-input {
             flex: 1;
-            padding: 10px;
+            padding: 10px 15px;
             border: 1px solid #ddd;
-            border-radius: 20px;
+            border-radius: 25px;
+            font-family: 'Cairo', sans-serif;
             outline: none;
         }
 
-        button {
-            background: #007bff;
+        .send-icon-btn {
+            width: 45px;
+            height: 45px;
+            background: var(--primary-color);
             color: white;
             border: none;
-            padding: 10px 20px;
-            border-radius: 20px;
+            border-radius: 50%;
             cursor: pointer;
-            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.2s;
         }
 
-        button:disabled {
-            background: #ccc;
+        .send-icon-btn:hover {
+            transform: scale(1.05);
         }
 
-        .settings {
-            padding: 10px;
-            background: #ffeebb;
-            color: #856404;
-            font-size: 0.9em;
-            text-align: center;
+        /* Typing Indicator */
+        .typing {
+            font-size: 0.8rem;
+            color: #888;
+            margin-bottom: 5px;
             display: none;
         }
     </style>
@@ -108,99 +295,166 @@
 
 <body>
 
-    <div class="chat-container">
-        <div class="chat-header">خدمة العملاء (AI)</div>
-        <div id="settings-area" class="settings">
-            ⚠️ يجب وضع رابط السيرفر أولاً في الكود أو هنا
-            <br>
-            <input type="text" id="api-url" placeholder="Paste Cloud Run URL here..."
-                style="width: 90%; margin-top: 5px;">
+    <!-- Widget Toggle Button -->
+    <div class="chat-widget-btn" onclick="toggleWidget()">
+        <i class="fas fa-comment-dots"></i>
+    </div>
+
+    <!-- Main Container -->
+    <div class="chat-widget-container" id="widgetContainer">
+
+        <!-- Header -->
+        <div class="widget-header">
+            <div class="header-content">
+                <h3>المساعد الضريبي</h3>
+                <p>Tax Admin 3.0</p>
+            </div>
+            <button class="close-btn" onclick="toggleWidget()">
+                <i class="fas fa-times"></i>
+            </button>
         </div>
-        <div class="chat-messages" id="messages">
-            <div class="message bot">أهلاً بك! أنا "أحمد"، كيف يمكنني مساعدتك اليوم في خدمات التأمين؟ 😊</div>
+
+        <!-- Login Screen -->
+        <div id="login-screen" class="screen">
+            <div class="logo-placeholder">
+                <i class="fas fa-university"></i>
+            </div>
+            <h4 style="margin: 0 0 20px 0; color: #333;">مرحباً بك في منظومة الضرائب</h4>
+            <p style="margin: 0 0 30px 0; color: #666; font-size: 0.9rem;">يرجى إدخال بياناتك للبدء في المساعدة</p>
+
+            <div class="form-group">
+                <label>الاسم الكامل</label>
+                <input type="text" id="userName" placeholder="مثال: أحمد محمد">
+            </div>
+
+            <div class="form-group">
+                <label>رقم التسجيل الضريبي (اختياري)</label>
+                <input type="text" id="taxId" placeholder="123-456-789">
+            </div>
+
+            <button class="start-chat-btn" onclick="startChat()">ابدأ المحادثة</button>
         </div>
-        <div class="chat-input">
-            <input type="text" id="userInput" placeholder="اكتب رسالتك هنا..." onkeypress="handleKeyPress(event)">
-            <button onclick="sendMessage()" id="sendBtn">إرسال</button>
+
+        <!-- Chat Screen -->
+        <div id="chat-screen" class="screen">
+            <div class="messages-area" id="messagesArea">
+                <!-- Messages will appear here -->
+            </div>
+
+            <div class="typing" id="typingIndicator">جاري الكتابة...</div>
+
+            <div class="input-area">
+                <input type="text" class="chat-input" id="chatInput" placeholder="اكتب سؤالك هنا..."
+                    onkeypress="handleEnter(event)">
+                <button class="send-icon-btn" onclick="sendMessage()">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
         </div>
+
     </div>
 
     <script>
-        // CHANGE THIS URL AFTER DEPLOYMENT
-        let API_URL = "YOUR_CLOUD_RUN_URL_HERE";
+        let API_URL = "http://127.0.0.1:8080";
+        let visitorName = "Guest";
+        let visitorTaxId = "";
 
-        const messagesDiv = document.getElementById('messages');
-        const userInput = document.getElementById('userInput');
-        const sendBtn = document.getElementById('sendBtn');
-        const apiUrlInput = document.getElementById('api-url');
-        const settingsArea = document.getElementById('settings-area');
+        // Toggle Widget Visibility
+        function toggleWidget() {
+            const container = document.getElementById('widgetContainer');
+            container.classList.toggle('active');
 
-        // Check if URL is set
-        if (API_URL === "YOUR_CLOUD_RUN_URL_HERE") {
-            settingsArea.style.display = "block";
+            const icon = document.querySelector('.chat-widget-btn i');
+            if (container.classList.contains('active')) {
+                icon.className = 'fas fa-chevron-down';
+            } else {
+                icon.className = 'fas fa-comment-dots';
+            }
         }
 
-        function handleKeyPress(e) {
-            if (e.key === 'Enter') sendMessage();
-        }
+        // Switch from Login to Chat
+        function startChat() {
+            const nameInput = document.getElementById('userName').value.trim();
+            const taxIdInput = document.getElementById('taxId').value.trim();
 
-        async function sendMessage() {
-            const text = userInput.value.trim();
-            if (!text) return;
-
-            // Get URL from input if not set in code
-            if (apiUrlInput.value) API_URL = apiUrlInput.value;
-            if (API_URL.endsWith('/')) API_URL = API_URL.slice(0, -1);
-            if (!API_URL.includes("http")) {
-                alert("Please enter a valid Cloud Run URL starting with https://");
+            if (!nameInput) {
+                alert("يرجى إدخال الاسم");
                 return;
             }
 
-            // User Message
-            appendMessage(text, 'user');
-            userInput.value = '';
-            setLoading(true);
+            visitorName = nameInput;
+            visitorTaxId = taxIdInput;
+
+            document.getElementById('login-screen').style.display = 'none';
+            document.getElementById('chat-screen').style.display = 'flex';
+
+            // Send initial system greeting
+            addMessage('bot', `أهلاً بك يا أستاذ/ة **${visitorName}** 👋\nأنا المساعد الذكي لمصلحة الضرائب. كيف أقدر أساعدك في إقراراتك أو استفساراتك اليوم؟`);
+        }
+
+        function handleEnter(e) {
+            if (e.key === 'Enter') sendMessage();
+        }
+
+        function addMessage(sender, text) {
+            const container = document.getElementById('messagesArea');
+            const div = document.createElement('div');
+            div.className = `message ${sender}`;
+
+            // Format Markdown: Links [Title](URL) and Bold **Text**
+            div.innerHTML = text
+                .replace(/\[(.*?)\]\((.*?)\)/g, '<a href="$2" target="_blank" style="color: #0d47a1; text-weight: 600; text-decoration: underline;">$1</a>')
+                .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                .replace(/\n/g, '<br>');
+
+            container.appendChild(div);
+            container.scrollTop = container.scrollHeight;
+        }
+
+        async function sendMessage() {
+            const input = document.getElementById('chatInput');
+            const text = input.value.trim();
+            if (!text) return;
+
+            addMessage('user', text);
+            input.value = '';
+
+            const typing = document.getElementById('typingIndicator');
+            typing.style.display = 'block';
 
             try {
+                // Include user context (Name/TaxID) in the message sent to bot if needed, 
+                // or just rely on the session (here we simulate session with random user_id)
+                // We append context for better AI understanding in the first message if implemented, 
+                // but for now, simple chat is enough.
+
                 const response = await fetch(`${API_URL}/chat`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
-                        user_id: 'web_visitor_' + Math.floor(Math.random() * 1000),
+                        user_id: `visitor_${visitorName.replace(/\s/g, '_')}`,
                         message: text,
                         language: 'ar'
                     })
                 });
 
                 const data = await response.json();
+                typing.style.display = 'none';
 
                 if (data.error) {
-                    appendMessage("Error: " + data.error, 'bot');
+                    addMessage('bot', "⚠️ حدث خطأ في الاتصال.");
                 } else {
-                    appendMessage(data.response, 'bot');
+                    addMessage('bot', data.response);
                 }
-            } catch (error) {
-                appendMessage("عذراً، حدث خطأ في الاتصال بالسيرفر. تأكد من الرابط.", 'bot');
-                console.error(error);
-                settingsArea.style.display = "block"; // Show settings to fix URL
+
+            } catch (e) {
+                typing.style.display = 'none';
+                addMessage('bot', "❌ لا يمكن الاتصال بالخادم.");
+                console.error(e);
             }
-
-            setLoading(false);
-        }
-
-        function appendMessage(text, sender) {
-            const div = document.createElement('div');
-            div.className = `message ${sender}`;
-            div.textContent = text;
-            messagesDiv.appendChild(div);
-            messagesDiv.scrollTop = messagesDiv.scrollHeight;
-        }
-
-        function setLoading(loading) {
-            sendBtn.disabled = loading;
-            sendBtn.textContent = loading ? '...' : 'إرسال';
         }
     </script>
+
 </body>
 
 </html>

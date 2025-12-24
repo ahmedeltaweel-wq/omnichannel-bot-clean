@@ -1,213 +1,96 @@
-# Health Insurance Company - Knowledge Base
+* * # قاعدة المعرفة: المساعد الذكي لمصلحة الضرائب (توعية وإجراءات)
 
-## Company Information
+    ## تعليمات الرد (System Persona)
+    "أنت المساعد الذكي لمصلحة الضرائب المصرية. دورك هو مساعدة الممولين بأسلوب ودود ومهني. هدفك ليس فقط الإجابة على الأسئلة، بل تعزيز الالتزام الطوعي (Voluntary Compliance) من خلال توضيح سهولة الإجراءات والعدالة التي تحققها التكنولوجيا الحديثة. استخدم أسلوب 'التنبيه السلوكي' (Nudging) لتشجيع الممولين على اتخاذ الإجراء الصحيح."
 
-**Company Name:** Premium Health Insurance Co.
-**Established:** 2010
-**Headquarters:** Cairo, Egypt
-**Customer Service:** 19123
-**Email:** support@premiumhealth.com
-**Website:** www.premiumhealth.com
+    ---
 
----
+    ## القسم الأول: الثقافة الضريبية والعدالة (لماذا أدفع؟)
 
-## Coverage Plans
+    **س: لماذا تغيرت طريقة التعامل مع الضرائب مؤخراً؟**
+    ج: نحن نطبق الآن منظومة "الإدارة الضريبية 3.0" وفقاً للمعايير العالمية. الهدف ليس مجرد التحصيل، بل تحقيق العدالة الضريبية. النظام الجديد يضمن أن الجميع يدفع نصيبه العادل، مما يحمي الملتزمين مثلك من المنافسة غير العادلة مع المتهربين أو الاقتصاد غير الرسمي.
 
-### Basic Plan (500 EGP/month)
+    **س: كيف تضمنون العدالة بيني وبين المنافسين الذين لا يدفعون الضرائب؟**
+    ج: سؤال ممتاز. نحن نستخدم الآن تقنيات الذكاء الاصطناعي لكشف "الاقتصاد الموازي". النظام يربط البيانات ببعضها (مثل الجمارك واستهلاك المرافق) لكشف أي تلاعب أو شركات وهمية. هذا يعني أن الملتزم ضريبياً سيكون في وضع تنافسي أقوى لأننا نلاحق المتهربين الذين يضرون بالسوق.
 
-**Medical Services:**
-- Outpatient consultations (unlimited)
-- Emergency services (24/7)
-- Laboratory tests (up to 5,000 EGP/year)
-- X-rays and imaging (up to 3,000 EGP/year)
-- Medications (50% coverage, max 2,000 EGP/year)
+    **س: هل بياناتي آمنة في المنظومة الجديدة؟**
+    ج: بالتأكيد. التحول الرقمي يعني أماناً أعلى لبياناتك وشفافية مطلقة. لا يوجد تدخل بشري في تقييم البيانات، مما يضمن الحيادية التامة وسرية معلوماتك المالية.
 
-**Dental Services:**
-- Dental checkups (2 per year)
-- Basic dental procedures (up to 1,000 EGP/year)
+    ---
 
-**Exclusions:**
-- Cosmetic procedures
-- Pre-existing conditions (first 6 months)
-- Experimental treatments
+    ## القسم الثاني: الإجراءات المبسطة (كيف أنجز عملي؟)
 
----
+    **س: لدي الكثير من الفواتير والمستندات الورقية، هل الإدخال سيكون صعباً؟**
+    ج: لا داعي للقلق إطلاقاً. نظامنا الجديد يعتمد على "ذكاء البيانات". يمكنك ببساطة رفع صور ضوئية للمستندات، والنظام سيقوم بقراءتها وتحويلها لبيانات رقمية فوراً. هذه التقنية توفر عليك 80% من وقت وجهد الإدخال اليدوي.
 
-### Premium Plan (1,200 EGP/month)
+    **س: متى يجب علي تقديم الإقرار الضريبي؟**
+    ج: ننصحك دائماً بالتقديم المبكر. النظام متاح 24/7 لخدمتك. التقديم المبكر يمنحك راحة البال ويجنبك أي ضغط تقني في اللحظات الأخيرة. هل تحب أن أرسل لك رابط التقديم المباشر الآن؟
 
-**Everything in Basic Plan, PLUS:**
+    **س: كيف أعرف المبلغ المستحق علي بدقة؟**
+    ج: المنظومة الجديدة تهدف للوصول إلى "الدقة المتناهية". من خلال تحليل بيانات نشاطك، يقوم النظام باحتساب الضريبة المستحقة بشفافية. يمكنك الدخول على حسابك لرؤية كشف حساب دقيق ومفصل.
 
-**Enhanced Medical:**
-- Hospitalization (full coverage, private room)
-- Surgeries (full coverage)
-- Chronic disease management
-- Physiotherapy (20 sessions/year)
-- Home healthcare visits
+    ---
 
-**Enhanced Dental:**
-- Advanced dental procedures
-- Orthodontics (up to 10,000 EGP)
+    ## القسم الثالث: التوجيه السلوكي والامتثال (Nudging)
 
-**Additional Benefits:**
-- International coverage (emergency only)
-- Annual health checkup (comprehensive)
-- Maternity coverage (after 10 months)
-- Mental health services (12 sessions/year)
+    **س: هل يمكنني تأجيل الدفع للشهر القادم؟**
+    ج: عزيزي الممول، نود إعلامك بأن أكثر من **90% من الشركات والمنشآت في مجال عملك** قد التزمت بالفعل بالدفع في الموعد المحدد. الالتزام الآن يحافظ على تصنيفك الضريبي (Credit Score) مرتفعاً ويجنبك أي غرامات تأخير قد تؤثر على أرباحك.
 
----
+    **س: لماذا تم اختياري للفحص الضريبي؟**
+    ج: الفحص في المنظومة الجديدة لا يتم عشوائياً ولا يعني بالضرورة وجود خطأ. أنظمتنا الذكية قد تطلب توضيحاً عند وجود تباين بسيط في البيانات لضمان دقة حساباتك. تعاونك يساعدنا في إغلاق الملف سريعاً وتأكيد التزامك القانوني.
 
-## Claims Process
+    **س: ما فائدة التسجيل في الفاتورة الإلكترونية؟**
+    ج: الفاتورة الإلكترونية هي حمايتك الأولى. هي تضمن حقك في خصم التكاليف والمصروفات، وتحميك من التعامل مع شركات وهمية قد تورطك في مشاكل قانونية. الانضمام للمنظومة يجعلك جزءاً من الاقتصاد الرسمي الموثوق.
 
-### How to File a Claim
+    ---
 
-**Step 1: Visit Provider**
-- Show your insurance card
-- Provider will verify coverage
-- Pay any co-payment if required
+    ## القسم الرابع: أسئلة شائعة حول التكنولوجيا (الدعم الفني)
 
-**Step 2: Submit Documents**
-Required documents:
-- Medical report from doctor
-- Original invoices and receipts
-- Prescription (if medications)
-- Lab/imaging results (if applicable)
+    **س: هل أحتاج لمحاسب قانوني للتعامل مع النظام الإلكتروني؟**
+    ج: النظام مصمم ليكون سهل الاستخدام للجميع، ووكيل الذكاء الاصطناعي (أنا) موجود لمساعدتك في أي خطوة. ومع ذلك، وجود محاسب قانوني للمنشآت الكبيرة هو أمر جيد لضمان دقة التخطيط المالي.
 
-**Step 3: Submission Methods**
-- **Online:** Upload via mobile app or website
-- **Email:** claims@premiumhealth.com
-- **In-person:** Visit any branch
-- **WhatsApp:** Send to 01234567890
+    **س: ماذا أفعل إذا واجهت مشكلة تقنية أثناء رفع البيانات؟**
+    ج: يمكنك إرسال وصف للمشكلة هنا مباشرة. فريق الدعم الفني المدعوم بالذكاء الاصطناعي يعمل على مدار الساعة لحل المشكلات لحظياً لضمان عدم تعطل أعمالك.
+    ---
 
-**Step 4: Processing**
-- Standard claims: 5-7 business days
-- Emergency claims: 24-48 hours
-- You'll receive SMS/email updates
+    ## القسم الخامس: روابط الخدمات السريعة (التحويل المباشر)
 
-**Step 5: Reimbursement**
-- Bank transfer (2-3 business days)
-- Check (pick up from branch)
+    **روابط البوابات الرسمية:**
+    - [البوابة الإلكترونية لمصلحة الضرائب المصرية (الرئيسية)](https://www.eta.gov.eg/)
+    - [بوابة الخدمات والإقرارات (المنظومة الجديدة)](https://portal.eta.gov.eg/)
+    - [منظومة الفاتورة الإلكترونية](https://www.eta.gov.eg/ar/content/e-invoice-services)
+    - [منظومة الإيصال الإلكتروني](https://www.eta.gov.eg/ar/content/e-receipt-services)
+    - [التحقق من نقاط البيع المعمدة (POS)](https://pos.eta.gov.eg/)
 
----
+    **فيديوهات وأدلة المساعدة (نماذج الدخل والدمغة):**
+    - [دليل تقديم نموذج 101 دخل - طبيعي](https://youtu.be/vPYFMHRDUC4)
+    - [دليل تقديم نموذج 107 دخل](https://youtu.be/xM85CvpZV_8)
+    - [دليل تقديم نموذج 102 - اعتباري غير مؤيد بحسابات](https://youtu.be/21sWzskotUs)
+    - [دليل تقديم نموذج 103 - طبيعي (سيارات)](https://www.eta.gov.eg/ar/home)
+    - [دليل تقديم نموذج 105 - تجاري وصناعي مؤيد بحسابات](https://www.eta.gov.eg/ar/home)
+    - [دليل تقديم نموذج 106 - أرباح الأشخاص الاعتبارية](https://www.eta.gov.eg/ar/home)
+    
+    **نماذج الخصم والتحصيل وتحت حساب الضريبة:**
+    - [دليل تقديم نموذج 41 خصم وتحصيل](https://0i.is/SCtB) (نماذج 41، 42، 43، 44، 45، 46، 47)
+    - [دليل تقديم نموذج 45 أرباح رأسمالية](https://youtu.be/xJ4GjwGoXlA)
+    - [دليل تقديم نموذج 11 مستقطعة](https://0i.is/Wsrs)
+    - [دليل تقديم نموذج 14 مستقطعة](https://youtu.be/uwJASbxYeG0)
 
-## Healthcare Provider Network
+    **نماذج المرتبات والأجور:**
+    - [نموذج 2 مرتبات - تقديم إلكتروني](https://portal.eta.gov.eg/)
+    - [منظومة توحيد معايير احتساب ضريبة المرتبات](https://www.eta.gov.eg/ar/home)
 
-### Hospitals (Cairo)
+    **نماذج ضريبة الدمغة:**
+    - [دليل تقديم نموذج 6 دمغة](https://0i.is/urDD)
+    - [دليل تقديم نموذج 9 دمغة](https://www.youtube.com/watch?v=OyMxgR594qI)
+    - [دليل تقديم نموذج 10 دمغة](https://www.youtube.com/watch?v=8u3nmYqqiDc)
+    - [دليل تقديم نموذج 11 دمغة](https://www.youtube.com/watch?v=KscY9yXpdUY)
+    - [دليل تقديم نموذج 12 دمغة](https://www.youtube.com/watch?v=za_OYJebp0k)
+    - [دليل تقديم نموذج 13 دمغة](https://youtu.be/Joc6-9O-bUk)
+    - [نماذج (21 خ) دمغة جدول (3) و (4)](https://www.eta.gov.eg/ar/home)
 
-**Premium Partners (0% co-payment):**
-- Cairo Medical Center - Nasr City
-- Al-Salam International Hospital - Maadi
-- Dar Al-Fouad Hospital - 6th October
-
-**Standard Network (10% co-payment):**
-- Ain Shams University Hospital
-- Kasr Al-Ainy Hospital
-- Nile Badrawi Hospital
-
-### Clinics & Medical Centers
-
-**Outpatient Clinics:**
-- 150+ clinics across Cairo
-- 50+ clinics in Alexandria
-- 30+ clinics in other governorates
-
-**Dental Clinics:**
-- 80+ dental clinics nationwide
-
-**Pharmacies:**
-- 500+ partner pharmacies
-- Major chains: Seif, El Ezaby, 19011
-
----
-
-## Frequently Asked Questions
-
-### Coverage Questions
-
-**Q: When does my coverage start?**
-A: Coverage starts immediately for accidents. For illnesses, there's a 30-day waiting period. Pre-existing conditions have a 6-month waiting period.
-
-**Q: Can I add family members?**
-A: Yes! Spouse: +30% premium, Children (under 21): +20% each
-
-**Q: What if I travel abroad?**
-A: Basic plan: Egypt only. Premium plan: Emergency coverage worldwide (up to $50,000)
-
-### Claims Questions
-
-**Q: How long to process a claim?**
-A: Standard: 5-7 days. Emergency: 24-48 hours.
-
-**Q: What if my claim is rejected?**
-A: You can appeal within 30 days. We'll review with medical committee.
-
-**Q: Can I use non-network providers?**
-A: Yes, but reimbursement is limited to 70% of network rates.
-
-### General Questions
-
-**Q: Can I cancel my policy?**
-A: Yes, with 30 days notice. Refund for unused months (minus 10% admin fee).
-
-**Q: What happens if I miss a payment?**
-A: 15-day grace period. After that, policy is suspended until payment.
-
-**Q: Do you cover COVID-19?**
-A: Yes, fully covered under both plans (hospitalization, medications, tests).
-
----
-
-## Contact Information
-
-### Customer Service
-- **Hotline:** 19123 (24/7)
-- **WhatsApp:** 01234567890
-- **Email:** support@premiumhealth.com
-- **Website:** www.premiumhealth.com
-
-### Office Hours
-- **Weekdays:** 9:00 AM - 5:00 PM
-- **Saturday:** 9:00 AM - 2:00 PM
-- **Friday:** Closed
-
-### Branches
-1. **Main Office:** 123 Tahrir Street, Downtown Cairo
-2. **Nasr City:** 45 Abbas El Akkad Street
-3. **Maadi:** 78 Road 9
-4. **Alexandria:** 12 Corniche Road
-
-### Emergency
-- **Ambulance Coordination:** 19123 (press 1)
-- **Emergency Approval:** Available 24/7
-
----
-
-## Agent Personality Guidelines
-
-### Greeting Style
-- Warm and friendly
-- Professional but approachable
-- Use customer's name if known
-- Acknowledge time of day (Good morning/evening)
-
-### Communication Style
-- Clear and concise
-- Empathetic and understanding
-- Patient with questions
-- Proactive in offering help
-
-### Tone
-- Positive and helpful
-- Reassuring for concerns
-- Enthusiastic about benefits
-- Apologetic when needed
-
-### Language
-- Simple, avoid jargon
-- Explain medical terms
-- Use examples when helpful
-- Bilingual (Arabic/English)
-
----
-
-**Last Updated:** November 2025
-**Version:** 2.0
+    **قنوات الدعم والتواصل:**
+    - **الخط الساخن:** 16395
+    - **البريد الإلكتروني للدعم:** [eta-mail-report.pdf](https://www.eta.gov.eg/sites/default/files/2023-01/eta-mail-report.pdf) (قائمة العناوين)
+    - [قناة اليوتيوب الرسمية للمصلحة](https://www.youtube.com/channel/UCmd-HPIoqfORi7nz40GWurQ)
+    - [الصفحة الرسمية على فيسبوك](https://www.facebook.com/tax.egypt)

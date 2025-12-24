@@ -47,22 +47,7 @@ class CompanyKnowledge:
     
     def get_summary(self):
         """Get knowledge base summary"""
-        content = self.company_info["full_content"]
-        lines = content.split('\n')
-        
-        # Extract key sections
-        summary = []
-        in_section = False
-        
-        for line in lines[:100]:  # First 100 lines for summary
-            if line.startswith('##'):
-                summary.append(line)
-                in_section = True
-            elif in_section and line.strip() and not line.startswith('#'):
-                summary.append(line)
-                in_section = False
-        
-        return '\n'.join(summary[:20])  # First 20 relevant lines
+        return self.company_info["full_content"]  # Return full content for AI context
     
     def search_section(self, keyword):
         """Search for specific section in knowledge base"""

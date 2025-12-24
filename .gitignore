@@ -5,7 +5,7 @@ __pycache__/
 *.log
 .wwebjs_cache/
 node_modules/
-*.bat
+# *.bat (Removed to allow startup scripts)
 get_models.py
 available_models.txt
 whatsapp_*.py
